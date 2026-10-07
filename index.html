@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recorder King</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app" class="app" aria-live="polite">
+    <section id="titleScreen" class="screen title-screen active">
+      <div class="curtain curtain-left"></div>
+      <div class="curtain curtain-right"></div>
+
+      <div class="title-card">
+        <p class="eyebrow">30 SECOND RECORDER CONCERT</p>
+        <h1>Recorder King</h1>
+        <p class="subtitle">Queen of the Night Aria · Recorder Edition</p>
+
+        <div class="difficulty-panel" role="group" aria-label="난이도 선택">
+          <button class="difficulty-btn active" data-difficulty="easy">EASY</button>
+          <button class="difficulty-btn" data-difficulty="normal">NORMAL</button>
+          <button class="difficulty-btn" data-difficulty="hard">HARD</button>
+        </div>
+
+        <div class="key-guide title-guide" aria-label="조작키 안내">
+          <span>A 도</span><span>S 레</span><span>D 미</span><span>F 파</span>
+          <span>G 솔</span><span>H 라</span><span>J 시</span><span>K 높은 도</span>
+        </div>
+
+        <p class="rule-text">
+          〈밤의 여왕 아리아〉의 유명한 고음 파트를 8키 도레미 안에서 단순화했습니다.<br />
+          정확도 70% 이상이면 SUCCESS. 틀려도 공연은 끝까지 계속됩니다.
+        </p>
+
+        <button id="startBtn" class="main-btn">START CONCERT</button>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen">
+      <div class="stage-bg"></div>
+
+      <div id="curtainOverlay" class="curtain-overlay">
+        <div class="curtain curtain-left"></div>
+        <div class="curtain curtain-right"></div>
+        <div class="ready-text">READY?</div>
+      </div>
+
+      <header class="hud">
+        <div><span class="label">STATE</span><strong id="stateText">TITLE</strong></div>
+        <div><span class="label">TIME</span><strong id="timeText">30.0</strong></div>
+        <div><span class="label">SCORE</span><strong id="scoreText">0</strong></div>
+        <div><span class="label">COMBO</span><strong id="comboText">0</strong></div>
+        <div><span class="label">DIFFICULTY</span><strong id="difficultyText">EASY</strong></div>
+      </header>
+
+      <section class="play-field" aria-label="리듬 게임 영역">
+        <div class="music-lane" id="musicLane">
+          <div class="staff-line line-1"></div>
+          <div class="staff-line line-2"></div>
+          <div class="staff-line line-3"></div>
+          <div class="staff-line line-4"></div>
+          <div class="staff-line line-5"></div>
+          <div class="judge-box"><span>HIT</span></div>
+          <div id="notesLayer" class="notes-layer"></div>
+        </div>
+
+        <div class="performer" id="performer" aria-hidden="true">
+          <img src="assets/hoo-rook-recorder.png" alt="" />
+        </div>
+
+        <div id="judgeText" class="judge-text">READY</div>
+        <div id="warningText" class="warning-text"></div>
+      </section>
+
+      <footer class="control-row">
+        <div class="key-guide" id="liveKeyGuide">
+          <span data-key="A">A 도</span><span data-key="S">S 레</span><span data-key="D">D 미</span><span data-key="F">F 파</span>
+          <span data-key="G">G 솔</span><span data-key="H">H 라</span><span data-key="J">J 시</span><span data-key="K">K 높은 도</span>
+        </div>
+        <div class="utility-buttons">
+          <button id="pauseBtn" class="small-btn">PAUSE</button>
+          <button id="muteBtn" class="small-btn">MUTE OFF</button>
+          <button id="motionBtn" class="small-btn">MOTION ON</button>
+        </div>
+      </footer>
+    </section>
+
+    <section id="resultScreen" class="screen result-screen">
+      <div class="result-card">
+        <p class="eyebrow">CONCERT RESULT</p>
+        <h2 id="resultTitle">SUCCESS</h2>
+        <p id="resultRank" class="result-rank">왕비님도 기립박수</p>
+
+        <div class="result-grid">
+          <div><span>SCORE</span><strong id="finalScore">0</strong></div>
+          <div><span>ACCURACY</span><strong id="finalAccuracy">0%</strong></div>
+          <div><span>MAX COMBO</span><strong id="finalCombo">0</strong></div>
+          <div><span>MISS</span><strong id="finalMiss">0</strong></div>
+          <div><span>SQUEAKS</span><strong id="finalSqueak">0</strong></div>
+          <div><span>HIGH SCORE</span><strong id="highScoreText">0</strong></div>
+        </div>
+
+        <p class="result-note">외부 음원 없이 Web Audio로 리코더 음을 직접 생성합니다.</p>
+
+        <button id="retryBtn" class="main-btn">RETRY</button>
+        <button id="backBtn" class="ghost-btn">TITLE</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
